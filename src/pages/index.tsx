@@ -15,7 +15,7 @@ export default function Home({ posts }: { posts: any[] }) {
                 {post.title?.rendered || post.title || 'Untitled'}
               </a>
               <div dangerouslySetInnerHTML={{ 
-                __html: post.excerpt?.rendered || post.excerpt || post.body || 'No excerpt available' 
+                __html: (post.excerpt && typeof post.excerpt === 'object' && post.excerpt.rendered) || (typeof post.excerpt === 'string' ? post.excerpt : '') || post.body || 'No excerpt available'
               }} />
             </li>
           ))}
