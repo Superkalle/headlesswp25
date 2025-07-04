@@ -8,8 +8,8 @@ Einsatzbereit für Coolify/Docker und lokale Entwicklung.
 ### 1. Klonen & installieren
 
 ```bash
-git clone https://github.com/dein-user/dein-repo.git
-cd dein-repo
+git clone https://github.com/superkalle/headlesswp25.git
+cd headlesswp25
 npm install
 ```
 
