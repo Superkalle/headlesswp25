@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['deine-wp-domain.de'], // WordPress-Bilder
+    domains: [
+      'demo.wp-api.org', // Demo WordPress site for testing
+      // Add your actual WordPress domain here when you configure it
+      // 'your-wordpress-site.com',
+    ],
   },
 };
 
