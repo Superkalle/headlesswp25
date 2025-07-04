@@ -11,8 +11,12 @@ export default function Home({ posts }: { posts: any[] }) {
         <ul>
           {posts.map((post) => (
             <li key={post.id} className="mb-4">
-              <a href={`/posts/${post.slug}`} className="text-blue-600 underline">{post.title.rendered}</a>
-              <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+              <a href={`/posts/${post.slug}`} className="text-blue-600 underline">
+                {post.title?.rendered || post.title || 'Untitled'}
+              </a>
+              <div dangerouslySetInnerHTML={{ 
+                __html: post.excerpt?.rendered || post.excerpt || post.body || 'No excerpt available' 
+              }} />
             </li>
           ))}
         </ul>
@@ -22,11 +26,21 @@ export default function Home({ posts }: { posts: any[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getLatestPosts();
-  return {
-    props: {
-      posts,
-    },
-    revalidate: 60,
-  };
+  try {
+    const posts = await getLatestPosts();
+    return {
+      props: {
+        posts: posts || [],
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error('Error in getStaticProps:', error);
+    return {
+      props: {
+        posts: [],
+      },
+      revalidate: 60,
+    };
+  }
 };
