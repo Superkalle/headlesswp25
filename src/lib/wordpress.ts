@@ -1,7 +1,8 @@
 const API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL;
 
 export async function getLatestPosts() {
-  const res = await fetch(`${API_URL}/wp/v2/posts?per_page=5`);
+  const apiUrl = process.env.NEXT_PUBLIC_WORDPRESS_API_URL;
+  const res = await fetch(`${apiUrl}/wp/v2/posts?per_page=5`);
   if (!res.ok) throw new Error("Fehler beim Laden der Beiträge");
   return res.json();
 }

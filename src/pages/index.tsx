@@ -30,3 +30,4 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60,
   };
 };
+npm install
